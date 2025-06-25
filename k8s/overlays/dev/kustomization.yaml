@@ -1,0 +1,117 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Reference the base configuration
+resources:
+  - ../../base
+
+# Set the namespace for the dev environment
+namespace: aitheria-dev
+
+# Common labels for all resources in the dev environment
+commonLabels:
+  environment: dev
+  version: v0.1.0
+
+# ConfigMap generators for dev-specific configurations
+configMapGenerator:
+  # Override the auth service config for dev environment
+  - name: auth-service-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+      - DATABASE_ECHO=true
+      - BACKEND_CORS_ORIGINS=http://localhost:3000,http://localhost:8080,http://dev.aitheria-altos.com
+      - SERVER_HOST=http://dev-api.aitheria-altos.com
+
+# Secret generators for dev environment
+# Note: In a real environment, these would be managed by a secure secret manager
+secretGenerator:
+  - name: auth-service-secrets
+    behavior: replace
+    envs:
+      - secrets/auth-secrets.env
+    type: Opaque
+
+# Images to be used in the dev environment
+images:
+  - name: aitheria-altos-auth
+    newName: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/aitheria-altos-auth
+    newTag: dev-latest
+
+# Patches to apply to resources for dev environment
+patches:
+  # Set lower resource limits for dev environment
+  - path: patches/resource-limits-dev.yaml
+    target:
+      kind: Deployment
+      labelSelector: "service=auth"
+  
+  # Configure ingress for dev environment
+  - path: patches/ingress-dev.yaml
+    target:
+      kind: Ingress
+      name: aitheria-altos-ingress
+
+  # Set replicas for dev environment (fewer replicas than prod)
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: auth-service
+      spec:
+        replicas: 2
+    target:
+      kind: Deployment
+      name: auth-service
+
+# Replace the namespace in all resources
+replacements:
+  - source:
+      kind: Namespace
+      name: aitheria-system
+    targets:
+      - select:
+          kind: Namespace
+        fieldPaths:
+          - metadata.name
+        options:
+          create: true
+      - select:
+          kind: NetworkPolicy
+        fieldPaths:
+          - spec.ingress[].from[].namespaceSelector.matchLabels.name
+          - spec.egress[].to[].namespaceSelector.matchLabels.name
+
+# Configure the dev environment variables
+vars:
+  - name: INGRESS_HOST
+    objref:
+      kind: ConfigMap
+      name: env-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.INGRESS_HOST
+  - name: SSL_CERT_ARN
+    objref:
+      kind: ConfigMap
+      name: env-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.SSL_CERT_ARN
+  - name: CORS_ALLOW_ORIGIN
+    objref:
+      kind: ConfigMap
+      name: env-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.CORS_ALLOW_ORIGIN
+
+# Create a ConfigMap for environment-specific variables
+configMapGenerator:
+  - name: env-config
+    literals:
+      - INGRESS_HOST=dev-api.aitheria-altos.com
+      - SSL_CERT_ARN=arn:aws:acm:us-west-2:123456789012:certificate/dev-certificate
+      - CORS_ALLOW_ORIGIN=http://localhost:3000,http://localhost:8080,https://dev.aitheria-altos.com

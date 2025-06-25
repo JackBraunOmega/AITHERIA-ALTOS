@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: aitheria-system
+  labels:
+    name: aitheria-system
+    app: aitheria-altos
+    part-of: aitheria-platform
+    managed-by: kustomize
+    environment: shared
+  annotations:
+    description: "AITHERIA ALTOS Biotechnology SaaS Platform shared namespace"
+    compliance: "HIPAA, FDA-21-CFR-Part-11"
+    owner: "platform-team"
+    contact: "platform@aitheria-altos.com"
+    documentation: "https://docs.aitheria-altos.com/platform/kubernetes"
+spec:
+  finalizers:
+    - kubernetes

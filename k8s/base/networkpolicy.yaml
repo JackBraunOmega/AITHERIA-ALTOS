@@ -1,0 +1,116 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: auth-service-network-policy
+  labels:
+    service: auth
+    tier: backend
+    app: aitheria-altos
+spec:
+  # Select all pods with the auth service label
+  podSelector:
+    matchLabels:
+      service: auth
+  
+  # Default deny all ingress and egress
+  policyTypes:
+  - Ingress
+  - Egress
+  
+  # Define allowed ingress (incoming) traffic
+  ingress:
+  # Allow traffic from API Gateway
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: aitheria-system
+      podSelector:
+        matchLabels:
+          service: api-gateway
+    ports:
+    - protocol: TCP
+      port: 8000
+  
+  # Allow health checks from Kubernetes control plane
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+    ports:
+    - protocol: TCP
+      port: 8000
+  
+  # Allow traffic from other services that need auth
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: aitheria-system
+      podSelector:
+        matchLabels:
+          tier: backend
+    ports:
+    - protocol: TCP
+      port: 8000
+  
+  # Define allowed egress (outgoing) traffic
+  egress:
+  # Allow traffic to PostgreSQL database
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: aitheria-system
+      podSelector:
+        matchLabels:
+          service: postgres
+    ports:
+    - protocol: TCP
+      port: 5432
+  
+  # Allow traffic to Redis
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: aitheria-system
+      podSelector:
+        matchLabels:
+          service: redis
+    ports:
+    - protocol: TCP
+      port: 6379
+  
+  # Allow DNS resolution
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  
+  # Allow traffic to other backend services
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: aitheria-system
+      podSelector:
+        matchLabels:
+          tier: backend
+    ports:
+    - protocol: TCP
+      port: 80
+    - protocol: TCP
+      port: 8000
+  
+  # Allow traffic for monitoring and metrics
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: monitoring
+    ports:
+    - protocol: TCP
+      port: 9090  # Prometheus

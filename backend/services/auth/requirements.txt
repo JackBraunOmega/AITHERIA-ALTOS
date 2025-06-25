@@ -1,0 +1,62 @@
+# AITHERIA ALTOS - Auth Service Dependencies
+# ===========================================
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.23.2
+pydantic==2.4.2
+pydantic-settings==2.0.3
+starlette==0.27.0
+
+# ASGI Middleware
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.12.1
+psycopg2-binary==2.9.9
+asyncpg==0.28.0
+
+# Authentication & Authorization
+python-jose[cryptography]==3.3.0
+pyjwt==2.8.0
+authlib==1.2.1
+itsdangerous==2.1.2
+
+# OAuth Providers
+httpx==0.25.1
+oauthlib==3.2.2
+python-dotenv==1.0.0
+
+# Caching
+redis==5.0.1
+aioredis==2.0.1
+
+# Logging
+loguru==0.7.2
+
+# Security
+cryptography==41.0.5
+bcrypt==4.0.1
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+httpx==0.25.1
+asgi-lifespan==2.1.0
+
+# Utilities
+pydantic-extra-types==2.1.0
+email-validator==2.1.0.post1
+tenacity==8.2.3
+pytz==2023.3.post1
+
+# Monitoring & Tracing
+opentelemetry-api==1.20.0
+opentelemetry-sdk==1.20.0
+opentelemetry-instrumentation-fastapi==0.41b0
+prometheus-client==0.17.1

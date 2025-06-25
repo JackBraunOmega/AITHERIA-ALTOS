@@ -1,0 +1,61 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Common labels for all resources
+commonLabels:
+  app: aitheria-altos
+  part-of: aitheria-platform
+  managed-by: kustomize
+
+# Resources to be applied
+resources:
+  # Auth Service
+  - auth/deployment.yaml
+  - auth/service.yaml
+  - auth/configmap.yaml
+  - auth/serviceaccount.yaml
+  
+  # Shared Resources
+  - namespace.yaml
+  - ingress.yaml
+  - networkpolicy.yaml
+
+# ConfigMap generators
+configMapGenerator:
+  - name: auth-service-config
+    files:
+      - configs/auth-service.properties
+    options:
+      labels:
+        service: auth
+
+# Secret generators (reference only - actual secrets should be managed securely)
+secretGenerator:
+  - name: auth-service-secrets
+    envs:
+      - configs/auth-secrets.env
+    options:
+      disableNameSuffixHash: true
+      labels:
+        service: auth
+
+# Default namespace (will be overridden in overlays)
+namespace: aitheria-system
+
+# Images to be used (will be patched in overlays)
+images:
+  - name: aitheria-altos-auth
+    newName: ${ECR_REPOSITORY}/aitheria-altos-auth
+    newTag: latest
+
+# Resource configurations
+replicas:
+  - name: auth-service
+    count: 1
+
+# Patches to apply to resources
+patches:
+  - path: patches/resource-limits.yaml
+    target:
+      kind: Deployment
+      labelSelector: "service=auth"

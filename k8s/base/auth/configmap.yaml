@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-service-config
+  labels:
+    service: auth
+    tier: backend
+data:
+  # Environment settings
+  ENVIRONMENT: "development"  # Will be overridden in overlays
+  
+  # API configuration
+  API_V1_STR: "/api/v1"
+  PROJECT_NAME: "AITHERIA ALTOS Auth Service"
+  VERSION: "0.1.0"
+  SERVER_HOST: "http://api-gateway"
+  FRONTEND_URL: "http://frontend.aitheria-altos.svc.cluster.local"
+  
+  # CORS settings (comma-separated list)
+  BACKEND_CORS_ORIGINS: "http://localhost:3000,http://localhost:8080,http://frontend.aitheria-altos.svc.cluster.local"
+  
+  # Database configuration (non-sensitive)
+  DATABASE_POOL_SIZE: "20"
+  DATABASE_MAX_OVERFLOW: "10"
+  DATABASE_POOL_TIMEOUT: "30"
+  DATABASE_ECHO: "false"
+  
+  # Redis configuration (non-sensitive)
+  REDIS_POOL_SIZE: "10"
+  
+  # Rate limiting
+  RATE_LIMIT_ENABLED: "true"
+  RATE_LIMIT_DEFAULT_LIMIT: "100"
+  RATE_LIMIT_DEFAULT_PERIOD: "60"
+  
+  # Security settings (non-sensitive)
+  BCRYPT_ROUNDS: "12"
+  MAX_FAILED_LOGIN_ATTEMPTS: "5"
+  ACCOUNT_LOCKOUT_MINUTES: "30"
+  
+  # Session settings
+  SESSION_COOKIE_NAME: "aitheria_session"
+  SESSION_COOKIE_SECURE: "false"  # Will be true in prod
+  SESSION_COOKIE_HTTPONLY: "true"
+  SESSION_COOKIE_SAMESITE: "lax"
+  USE_REFRESH_TOKEN_COOKIE: "true"
+  
+  # Token settings
+  JWT_ACCESS_TOKEN_EXPIRE_MINUTES: "30"
+  JWT_REFRESH_TOKEN_EXPIRE_DAYS: "7"
+  API_TOKEN_DEFAULT_EXPIRY_DAYS: "90"
+  
+  # Feature flags
+  ENABLE_MFA: "false"
+  ENABLE_SSO: "true"
+  ENABLE_SOCIAL_LOGIN: "true"
+  ENABLE_AUDIT_LOG: "true"
+  
+  # Logging configuration
+  LOG_LEVEL: "INFO"
+  LOG_FORMAT: "json"
+  
+  # Auth service properties file
+  auth-service.properties: |
+    # Auth Service Configuration
+    service.name=auth-service
+    service.description=Authentication and authorization service for AITHERIA ALTOS platform
+    service.version=0.1.0
+    service.documentation.url=/docs
+    service.health.enabled=true
+    service.metrics.enabled=true
