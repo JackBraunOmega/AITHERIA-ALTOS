@@ -1,42 +1,37 @@
 """
-AITHERIA ALTOS - Auth Service
-============================
+AITHERIA ALTOS - Project Service
+===============================
 
-Main application entry point for the Auth microservice.
-This service handles user authentication, authorization, and identity management.
+Main application entry point for the Project microservice.
+This service handles the management of research projects, including
+project creation, updates, deletion, and searching.
 
 Features:
-- User registration and login
-- OAuth 2.0 / OpenID Connect integration
-- JWT token issuance and validation
-- Role-based access control (RBAC)
-- Multi-factor authentication (MFA)
-- Session management
+- Project CRUD operations
+- Project versioning and history tracking
+- Team collaboration within projects
 """
 
 import time
 from contextlib import asynccontextmanager
 import os
-from typing import Annotated, List
+from typing import Any, Dict, List
 
 from fastapi import Depends, FastAPI, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from fastapi.security import OAuth2PasswordBearer
 from loguru import logger
 import uvicorn
 
 from app.api.v1.api import api_router
 from app.core.config import settings
-from app.core.security import get_current_user
-from app.db.init_db import create_first_superuser, init_db
+from app.db.init_db import init_db
 from app.db.session import async_session_maker, engine
-from app.models.user import User
 
 # Setup logging
 logger.remove()
 logger.add(
-    os.path.join("logs", "auth_service.log"),
+    os.path.join("logs", "project_service.log"),
     rotation="20 MB",
     retention="1 week",
     level="INFO",
@@ -54,39 +49,32 @@ async def lifespan(app: FastAPI):
     Handles startup and shutdown events.
     """
     # Startup
-    logger.info("Starting Auth Service...")
+    logger.info("Starting Project Service...")
     
     # Initialize database
     try:
         logger.info("Initializing database...")
         await init_db(engine)
-        
-        # Create first superuser if needed
-        if settings.FIRST_SUPERUSER:
-            try:
-                await create_first_superuser()
-            except Exception as e:
-                logger.error(f"Error creating superuser: {e}")
     except Exception as e:
         logger.error(f"Error initializing database: {e}")
         raise
     
-    logger.info("Auth Service startup complete")
+    logger.info("Project Service startup complete")
     yield
     
     # Shutdown
-    logger.info("Shutting down Auth Service...")
+    logger.info("Shutting down Project Service...")
     # Close any connections or resources
-    logger.info("Auth Service shutdown complete")
+    logger.info("Project Service shutdown complete")
 
 
 # Create FastAPI app
 app = FastAPI(
     title=settings.PROJECT_NAME,
     description="""
-    AITHERIA ALTOS Auth Service API.
+    AITHERIA ALTOS Project Service API.
     
-    This service handles user authentication, authorization, and identity management for the AITHERIA ALTOS platform.
+    This service handles the management of research projects for the AITHERIA ALTOS platform.
     """,
     version="0.1.0",
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
@@ -149,7 +137,7 @@ async def health_check():
     """
     health_data = {
         "status": "healthy",
-        "service": "auth",
+        "service": "project",
         "version": settings.VERSION,
         "environment": settings.ENVIRONMENT,
         "timestamp": time.time(),
@@ -161,7 +149,7 @@ async def health_check():
     # In a real implementation, we would check database connectivity
     try:
         # Perform a simple database query using async session
-        from sqlalchemy import text  # Import here to keep global imports minimal
+        from sqlalchemy import text  # local import to avoid unnecessary global dependency
         async with async_session_maker() as db:
             await db.execute(text("SELECT 1"))
     except Exception as e:
@@ -176,7 +164,7 @@ async def health_check():
 @app.get("/", include_in_schema=False)
 async def root():
     """Redirect root endpoint to API documentation."""
-    return {"message": "Auth Service API", "docs": "/docs"}
+    return {"message": "Project Service API", "docs": "/docs"}
 
 # Error handlers
 @app.exception_handler(status.HTTP_404_NOT_FOUND)

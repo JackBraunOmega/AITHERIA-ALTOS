@@ -20,21 +20,21 @@ Usage:
 from datetime import datetime, timedelta
 from typing import Any, Dict, Optional, Union
 
+# Include FastAPI and JOSE security utilities
 from fastapi import Depends, HTTPException, Security, status
 from fastapi.security import OAuth2PasswordBearer, SecurityScopes
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from pydantic import ValidationError
+# SQLAlchemy async session
 from sqlalchemy.ext.asyncio import AsyncSession
 
+# Project-specific imports
 from app.core.config import settings
 from app.db.session import get_db
 from app.models.user import User
 from app.schemas.token import TokenData
 from app.services.user_service import get_user_by_email
-
-# Password hashing context
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+from app.core.password import get_password_hash, verify_password
 
 # OAuth2 scheme for token authentication
 oauth2_scheme = OAuth2PasswordBearer(
@@ -46,33 +46,6 @@ oauth2_scheme = OAuth2PasswordBearer(
         "project": "Access to project management features.",
     },
 )
-
-
-def get_password_hash(password: str) -> str:
-    """
-    Hash a password using bcrypt.
-    
-    Args:
-        password: Plain text password to hash
-        
-    Returns:
-        Hashed password string
-    """
-    return pwd_context.hash(password)
-
-
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """
-    Verify a password against a hash.
-    
-    Args:
-        plain_password: Plain text password to verify
-        hashed_password: Hashed password to compare against
-        
-    Returns:
-        True if the password matches the hash, False otherwise
-    """
-    return pwd_context.verify(plain_password, hashed_password)
 
 
 def create_access_token(

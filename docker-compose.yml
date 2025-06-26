@@ -14,7 +14,31 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-aitheria_auth}
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
-      - "5432:5432"
+      - "5434:5432"
+    networks:
+      - aitheria-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # PostgreSQL Database for Project Service
+  postgres-project:
+    image: postgres:15-alpine
+    container_name: aitheria-postgres-project
+    volumes:
+      - postgres_project_data:/var/lib/postgresql/data
+      - ./infrastructure/docker/postgres/init:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_PROJECT_DB:-aitheria_project}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5435:5432"
     networks:
       - aitheria-network
     healthcheck:
@@ -33,7 +57,7 @@ services:
     volumes:
       - redis_data:/data
     ports:
-      - "6379:6379"
+      - "6380:6379"
     networks:
       - aitheria-network
     healthcheck:
@@ -50,7 +74,7 @@ services:
       dockerfile: Dockerfile
     container_name: aitheria-auth-service
     volumes:
-      - ./backend/services/auth:/app
+      # Only persist log files; application code is copied at build time
       - auth_service_logs:/app/logs
     environment:
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-aitheria_auth}
@@ -61,15 +85,55 @@ services:
       JWT_REFRESH_TOKEN_EXPIRE_DAYS: ${JWT_REFRESH_TOKEN_EXPIRE_DAYS:-7}
       FIRST_SUPERUSER: ${FIRST_SUPERUSER:-admin@aitheria-altos.com}
       FIRST_SUPERUSER_PASSWORD: ${FIRST_SUPERUSER_PASSWORD:-Admin123!}
-      BACKEND_CORS_ORIGINS: ${BACKEND_CORS_ORIGINS:-"http://localhost:3000,http://localhost:8080"}
+      BACKEND_CORS_ORIGINS: ${BACKEND_CORS_ORIGINS}
       API_V1_STR: /api/v1
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      # Additional settings to improve hot reloading
+      PYTHONDONTWRITEBYTECODE: 1
+      PYTHONUNBUFFERED: 1
+      UVICORN_RELOAD: true
+      UVICORN_RELOAD_DIRS: /app
     ports:
       - "8001:8000"
     depends_on:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+    networks:
+      - aitheria-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  # Project Service microservice
+  project-service:
+    build:
+      context: ./backend/services/project
+      dockerfile: Dockerfile
+    container_name: aitheria-project-service
+    volumes:
+      # Only persist log files; application code is copied at build time
+      - project_service_logs:/app/logs
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres-project:5432/${POSTGRES_PROJECT_DB:-aitheria_project}
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      BACKEND_CORS_ORIGINS: ${BACKEND_CORS_ORIGINS}
+      API_V1_STR: /api/v1
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      # Additional settings to improve hot reloading
+      PYTHONDONTWRITEBYTECODE: 1
+      PYTHONUNBUFFERED: 1
+      UVICORN_RELOAD: true
+      UVICORN_RELOAD_DIRS: /app
+    ports:
+      - "8002:8000"
+    depends_on:
+      postgres-project:
         condition: service_healthy
     networks:
       - aitheria-network
@@ -90,9 +154,10 @@ services:
       - ./infrastructure/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - api_gateway_logs:/var/log/nginx
     ports:
-      - "8080:80"
+      - "8090:80"
     depends_on:
       - auth-service
+      - project-service
     networks:
       - aitheria-network
     healthcheck:
@@ -109,9 +174,13 @@ networks:
 volumes:
   postgres_data:
     name: aitheria-postgres-data
+  postgres_project_data:
+    name: aitheria-postgres-project-data
   redis_data:
     name: aitheria-redis-data
   auth_service_logs:
     name: aitheria-auth-service-logs
+  project_service_logs:
+    name: aitheria-project-service-logs
   api_gateway_logs:
     name: aitheria-api-gateway-logs

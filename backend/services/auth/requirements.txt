@@ -31,8 +31,11 @@ oauthlib==3.2.2
 python-dotenv==1.0.0
 
 # Caching
+# Note: Modern ``redis`` (>=4.x) already includes native asyncio support,
+# so we keep a single dependency and **remove any use of ``aioredis``**.
+# Make sure ``backend/services/auth/app/services/redis_service.py`` (and any
+# other modules) import ``redis.asyncio`` instead of ``aioredis``.
 redis==5.0.1
-aioredis==2.0.1
 
 # Logging
 loguru==0.7.2
@@ -54,6 +57,7 @@ pydantic-extra-types==2.1.0
 email-validator==2.1.0.post1
 tenacity==8.2.3
 pytz==2023.3.post1
+psutil==5.9.5
 
 # Monitoring & Tracing
 opentelemetry-api==1.20.0

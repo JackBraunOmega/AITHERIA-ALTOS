@@ -20,8 +20,7 @@ import asyncio
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 from contextlib import asynccontextmanager
 
-import aioredis
-from aioredis import Redis
+from redis.asyncio import Redis
 from loguru import logger
 
 from app.core.config import settings
@@ -48,14 +47,16 @@ async def get_redis_client() -> Redis:
     if _redis_pool is None:
         try:
             # Create Redis connection pool
-            _redis_pool = await aioredis.from_url(
+            _redis_pool = Redis.from_url(
                 settings.REDIS_URL,
                 encoding="utf-8",
                 decode_responses=True,
-                pool_size=settings.REDIS_POOL_SIZE,
+                max_connections=settings.REDIS_POOL_SIZE,
                 socket_timeout=5.0,
                 socket_connect_timeout=5.0,
             )
+            # Test the connection
+            await _redis_pool.ping()
             logger.info(f"Connected to Redis at {settings.REDIS_URL}")
         except Exception as e:
             logger.error(f"Failed to connect to Redis: {e}")

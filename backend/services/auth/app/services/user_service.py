@@ -24,7 +24,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload, joinedload
 
 from app.core.config import settings
-from app.core.security import get_password_hash, verify_password
+from app.core.password import get_password_hash, verify_password
 from app.db.session import get_db
 from app.models.user import User
 from app.models.role import Role

@@ -1,16 +1,16 @@
 """
-AITHERIA ALTOS - Auth Service Database Session
-=============================================
+AITHERIA ALTOS - Project Service Database Session
+===============================================
 
-This module provides database session management utilities for the Auth service.
+This module provides database session management utilities for the Project service.
 It configures the SQLAlchemy async engine and provides session factories and
 dependency functions for FastAPI routes.
 
 Usage:
     from app.db.session import get_db
     
-    @app.get("/users")
-    async def get_users(db: AsyncSession = Depends(get_db)):
+    @app.get("/projects")
+    async def get_projects(db: AsyncSession = Depends(get_db)):
         # Use db session here
         ...
 """
@@ -90,9 +90,9 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         AsyncSession: SQLAlchemy async session
         
     Example:
-        @app.get("/users")
-        async def get_users(db: AsyncSession = Depends(get_db)):
-            result = await db.execute(select(User))
+        @app.get("/projects")
+        async def get_projects(db: AsyncSession = Depends(get_db)):
+            result = await db.execute(select(Project))
             return result.scalars().all()
     """
     session = async_session_maker()
@@ -117,9 +117,12 @@ async def close_db_connections() -> None:
     
     This function should be called when the application is shutting down.
     """
-    logger.info("Closing database connections...")
-    await engine.dispose()
-    logger.info("Database connections closed")
+    global engine
+    
+    if engine is not None:
+        logger.info("Closing database connections...")
+        await engine.dispose()
+        logger.info("Database connections closed")
 
 
 def get_engine() -> AsyncEngine:

@@ -103,6 +103,31 @@ class TokenPayload(BaseModel):
             raise ValueError(f"Invalid refresh token: {e}")
 
 
+class TokenData(BaseModel):
+    """
+    Schema for token data extracted from JWT tokens.
+    
+    This schema represents the subset of JWT payload fields that the
+    application needs to store or propagate after the token has been
+    validated.  It intentionally mirrors a subset of ``TokenPayload`` but is
+    used in places where Pydantic models (rather than raw dicts) are
+    preferred—e.g., request dependencies, background tasks, or service
+    helpers.
+    """
+
+    sub: str = Field(..., description="Subject (usually user email)")
+    scopes: List[str] = Field(
+        default_factory=list, description="Permission scopes contained in the token"
+    )
+    exp: Optional[int] = Field(
+        None, description="Expiration time of the token (Unix timestamp)"
+    )
+    user_id: Optional[str] = Field(None, description="User ID associated with token")
+    is_superuser: Optional[bool] = Field(
+        False, description="Whether the user is a super-user"
+    )
+
+
 class APITokenBase(BaseModel):
     """
     Base schema for API tokens.
