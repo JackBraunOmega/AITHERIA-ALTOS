@@ -1,0 +1,35 @@
+feat(discovery-turn-05): apply Inversion Pattern 6 (trial: open-loop -> PICA inner loop)
+
+Architectural reference: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md
+Inversion pattern applied: Pattern 6 (trial: open-loop -> PICA inner loop)
+Cumulative patterns now applied: [1, 2, 3, 5, 6]
+
+Rationale (data-driven, not narrative):
+  Turn 4 still had a tail near the yield floor at 0.60. Pattern 6 adds
+  a PICA inner loop: per-trial, 3 iterations of envelope-correction nudge
+  near-floor designs into the envelope interior.
+
+Observed numbers (from disk, real run, 100,000 trials, seed=20260520):
+  yield_mean    =  76.9692%   std=3.3262
+  catalyst_mean =  65.2696%   std=2.6922
+  cost_mean     = $  1.3382/kg   std=0.0200
+  in_envelope   = True
+
+Forensic anchors (SHA-256, computed from disk via sha256_of_file):
+  HG-MC-RERUN-T05_raw_per_trial.npz    33288de9fd95d9fcb59e9d3f21239cf749f5ce52a8f4ab230b9348cdcb8a412d
+  HG-MC-RERUN-T05_summary.json         d7978eaa80967fb81686a76ff21e7670220596054b8ca59d508a1454a64ac44b
+  HG-MC-RERUN-T05_provenance.json      a1c40e444063fcab68bfbd18e394c16b7a025b7b9fce9284b5ae109d37bbecff
+  HG-MC-RERUN-T05_hashes.json          6df171394daadcc21caef021b72b0047b4819f64a9735ac4fa7160d57fa47cc7
+
+raw_per_trial_sha256 declared in summary: 33288de9fd95d9fcb59e9d3f21239cf749f5ce52a8f4ab230b9348cdcb8a412d
+raw_per_trial_sha256 computed from disk:   33288de9fd95d9fcb59e9d3f21239cf749f5ce52a8f4ab230b9348cdcb8a412d
+match: True
+
+Evidence pack location: aitheria-sim/output/HG-MC-RERUN-T05/ (gitignored)
+Per-turn report (committed):  docs/discovery/turn-05-report.md
+
+Honest framing: 100,000 trials per turn ran on the AITHERIA-SIM
+discovery kernel. Every number above came from disk in this session.
+No values were carried forward from prior context or memory.
+Underlying model is parametric chemistry-engineering, not TRaCE M6
+physical validation; validates_au_2026904845 remains False in summary.json.

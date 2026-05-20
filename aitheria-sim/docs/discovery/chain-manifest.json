@@ -1,0 +1,608 @@
+[
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T01_hashes.json": "6f23a094f1048f7314c16106014578a3398bfc35d4a6b523a9b22f1ce3485680",
+      "HG-MC-RERUN-T01_provenance.json": "aeaecb9f466bf101c5392a93b3e98e2de7c9e7606638b3a7d0bb292a713cc18a",
+      "HG-MC-RERUN-T01_raw_per_trial.npz": "2a6cf74dc332344b46f26874a77007ff638dffa53282b02b20da14877e1d9114",
+      "HG-MC-RERUN-T01_summary.json": "902abf3042eaac65b0cc4ef799c683a89a2a026e62ae2681e614386487e15b49"
+    },
+    "in_envelope": false,
+    "report_path": "docs/discovery/turn-01-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.99120690483912,
+      "catalyst_activity_std_pct": 2.8621957627815386,
+      "cost_per_kg_mean_aud": -12.049842113909195,
+      "cost_per_kg_std_aud": 4.206679664955146,
+      "discovery_turn": 1,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T01_raw_per_trial.npz": "output/HG-MC-RERUN-T01/HG-MC-RERUN-T01_raw_per_trial.npz",
+          "HG-MC-RERUN-T01_summary.json": "output/HG-MC-RERUN-T01/HG-MC-RERUN-T01_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T01_provenance.json": "aeaecb9f466bf101c5392a93b3e98e2de7c9e7606638b3a7d0bb292a713cc18a",
+          "HG-MC-RERUN-T01_raw_per_trial.npz": "2a6cf74dc332344b46f26874a77007ff638dffa53282b02b20da14877e1d9114",
+          "HG-MC-RERUN-T01_summary.json": "902abf3042eaac65b0cc4ef799c683a89a2a026e62ae2681e614386487e15b49"
+        },
+        "hashes_file": "HG-MC-RERUN-T01_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T01",
+        "provenance_file": "HG-MC-RERUN-T01_provenance.json",
+        "run_id": "HG-MC-RERUN-T01"
+      },
+      "h2_yield_mean_pct": 51.99947371303067,
+      "h2_yield_std_pct": 14.022265549850488,
+      "inversion_improvement_mean": 120.39814243592232,
+      "model_lineage": "discovery_turn_01",
+      "n_trials": 100000,
+      "patterns_applied": [
+        2
+      ],
+      "raw_per_trial_sha256": "2a6cf74dc332344b46f26874a77007ff638dffa53282b02b20da14877e1d9114",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T01",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false
+    },
+    "turn": 1
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T02_hashes.json": "cdd7bf6710b5caf585b381fb08217c1b5bb86516ce8120705fa96261fdc9ceef",
+      "HG-MC-RERUN-T02_provenance.json": "d597ffb96e6e013b63d264bc5965d9a87833938b49bdb1b149d37cbe4dc87f26",
+      "HG-MC-RERUN-T02_raw_per_trial.npz": "92381c68f05974573d932c47d6e7dd3888684eaa7adb9af27e75bbb8a8d35990",
+      "HG-MC-RERUN-T02_summary.json": "43cc54623b5666a50b5fc37c792d35553186de570a0b06588772cf0faa0b222f"
+    },
+    "in_envelope": false,
+    "report_path": "docs/discovery/turn-02-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.99120690483912,
+      "catalyst_activity_std_pct": 2.8621957627815386,
+      "cost_per_kg_mean_aud": 1.488003157721816,
+      "cost_per_kg_std_aud": 0.08413359329910289,
+      "discovery_turn": 2,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T02_raw_per_trial.npz": "output/HG-MC-RERUN-T02/HG-MC-RERUN-T02_raw_per_trial.npz",
+          "HG-MC-RERUN-T02_summary.json": "output/HG-MC-RERUN-T02/HG-MC-RERUN-T02_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T02_provenance.json": "d597ffb96e6e013b63d264bc5965d9a87833938b49bdb1b149d37cbe4dc87f26",
+          "HG-MC-RERUN-T02_raw_per_trial.npz": "92381c68f05974573d932c47d6e7dd3888684eaa7adb9af27e75bbb8a8d35990",
+          "HG-MC-RERUN-T02_summary.json": "43cc54623b5666a50b5fc37c792d35553186de570a0b06588772cf0faa0b222f"
+        },
+        "hashes_file": "HG-MC-RERUN-T02_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T02",
+        "provenance_file": "HG-MC-RERUN-T02_provenance.json",
+        "run_id": "HG-MC-RERUN-T02"
+      },
+      "h2_yield_mean_pct": 51.99947371303067,
+      "h2_yield_std_pct": 14.022265549850488,
+      "inversion_improvement_mean": 120.39814243592232,
+      "model_lineage": "discovery_turn_02",
+      "n_trials": 100000,
+      "patterns_applied": [
+        2,
+        5
+      ],
+      "raw_per_trial_sha256": "92381c68f05974573d932c47d6e7dd3888684eaa7adb9af27e75bbb8a8d35990",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T02",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false
+    },
+    "turn": 2
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T03_hashes.json": "57c7959dd8e662a42336076f7697ac7fd6ad1ae15af1cb60cff9674d441287aa",
+      "HG-MC-RERUN-T03_provenance.json": "f929e284da05e3c0b623369864b598ee4e7b2ef3b5adc9c110c7daa53f86c609",
+      "HG-MC-RERUN-T03_raw_per_trial.npz": "4b9a9ef46c9b5b7b96fcc67facd2eff2338b2d821f772be8d3f67cd1d470698f",
+      "HG-MC-RERUN-T03_summary.json": "0374304063acc2219671f3785584e24696dcb4d9ecfce44f806e06ec2d754d6c"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-03-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.99120690483912,
+      "catalyst_activity_std_pct": 2.8621957627815386,
+      "cost_per_kg_mean_aud": 1.3213998589565035,
+      "cost_per_kg_std_aud": 0.019412315001047103,
+      "discovery_turn": 3,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T03_raw_per_trial.npz": "output/HG-MC-RERUN-T03/HG-MC-RERUN-T03_raw_per_trial.npz",
+          "HG-MC-RERUN-T03_summary.json": "output/HG-MC-RERUN-T03/HG-MC-RERUN-T03_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T03_provenance.json": "f929e284da05e3c0b623369864b598ee4e7b2ef3b5adc9c110c7daa53f86c609",
+          "HG-MC-RERUN-T03_raw_per_trial.npz": "4b9a9ef46c9b5b7b96fcc67facd2eff2338b2d821f772be8d3f67cd1d470698f",
+          "HG-MC-RERUN-T03_summary.json": "0374304063acc2219671f3785584e24696dcb4d9ecfce44f806e06ec2d754d6c"
+        },
+        "hashes_file": "HG-MC-RERUN-T03_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T03",
+        "provenance_file": "HG-MC-RERUN-T03_provenance.json",
+        "run_id": "HG-MC-RERUN-T03"
+      },
+      "h2_yield_mean_pct": 79.76669017391612,
+      "h2_yield_std_pct": 3.2353858335078507,
+      "inversion_improvement_mean": 120.09616907502256,
+      "model_lineage": "discovery_turn_03",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        5
+      ],
+      "raw_per_trial_sha256": "4b9a9ef46c9b5b7b96fcc67facd2eff2338b2d821f772be8d3f67cd1d470698f",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T03",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false
+    },
+    "turn": 3
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T04_hashes.json": "6cacc576e4595d8f238bc41ba5325df5c27fd50d5a3de4da176735cf8c029b23",
+      "HG-MC-RERUN-T04_provenance.json": "01e2a1182e9445875019abb1448701bd69f9ce62d9e4a4a9eb070c4d11820d70",
+      "HG-MC-RERUN-T04_raw_per_trial.npz": "373121c09cec28a373d7a9c94c04a5a735e80f37bb16f50b23e5d04624770efc",
+      "HG-MC-RERUN-T04_summary.json": "1c7430bdffdbe74a9af40d4ad380d1564c3fa2972242f84ff009268e0084892d"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-04-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.2696220550122,
+      "catalyst_activity_std_pct": 2.6921627047945798,
+      "cost_per_kg_mean_aud": 1.338184569462022,
+      "cost_per_kg_std_aud": 0.01995734669329627,
+      "discovery_turn": 4,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T04_raw_per_trial.npz": "output/HG-MC-RERUN-T04/HG-MC-RERUN-T04_raw_per_trial.npz",
+          "HG-MC-RERUN-T04_summary.json": "output/HG-MC-RERUN-T04/HG-MC-RERUN-T04_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T04_provenance.json": "01e2a1182e9445875019abb1448701bd69f9ce62d9e4a4a9eb070c4d11820d70",
+          "HG-MC-RERUN-T04_raw_per_trial.npz": "373121c09cec28a373d7a9c94c04a5a735e80f37bb16f50b23e5d04624770efc",
+          "HG-MC-RERUN-T04_summary.json": "1c7430bdffdbe74a9af40d4ad380d1564c3fa2972242f84ff009268e0084892d"
+        },
+        "hashes_file": "HG-MC-RERUN-T04_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T04",
+        "provenance_file": "HG-MC-RERUN-T04_provenance.json",
+        "run_id": "HG-MC-RERUN-T04"
+      },
+      "h2_yield_mean_pct": 76.96923842299631,
+      "h2_yield_std_pct": 3.3262244488827113,
+      "inversion_improvement_mean": 120.03718127373973,
+      "model_lineage": "discovery_turn_04",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "raw_per_trial_sha256": "373121c09cec28a373d7a9c94c04a5a735e80f37bb16f50b23e5d04624770efc",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T04",
+      "safety_rate_pct": 100.0,
+      "skin_breakdown_kJ_mean": 37.49720048109904,
+      "skin_regen_rate_mean": 4.995931161955743,
+      "validates_au_2026904845": false
+    },
+    "turn": 4
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T05_hashes.json": "6df171394daadcc21caef021b72b0047b4819f64a9735ac4fa7160d57fa47cc7",
+      "HG-MC-RERUN-T05_provenance.json": "a1c40e444063fcab68bfbd18e394c16b7a025b7b9fce9284b5ae109d37bbecff",
+      "HG-MC-RERUN-T05_raw_per_trial.npz": "33288de9fd95d9fcb59e9d3f21239cf749f5ce52a8f4ab230b9348cdcb8a412d",
+      "HG-MC-RERUN-T05_summary.json": "d7978eaa80967fb81686a76ff21e7670220596054b8ca59d508a1454a64ac44b"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-05-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.2696220550122,
+      "catalyst_activity_std_pct": 2.6921627047945798,
+      "cost_per_kg_mean_aud": 1.338184569462022,
+      "cost_per_kg_std_aud": 0.01995734669329627,
+      "discovery_turn": 5,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T05_raw_per_trial.npz": "output/HG-MC-RERUN-T05/HG-MC-RERUN-T05_raw_per_trial.npz",
+          "HG-MC-RERUN-T05_summary.json": "output/HG-MC-RERUN-T05/HG-MC-RERUN-T05_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T05_provenance.json": "a1c40e444063fcab68bfbd18e394c16b7a025b7b9fce9284b5ae109d37bbecff",
+          "HG-MC-RERUN-T05_raw_per_trial.npz": "33288de9fd95d9fcb59e9d3f21239cf749f5ce52a8f4ab230b9348cdcb8a412d",
+          "HG-MC-RERUN-T05_summary.json": "d7978eaa80967fb81686a76ff21e7670220596054b8ca59d508a1454a64ac44b"
+        },
+        "hashes_file": "HG-MC-RERUN-T05_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T05",
+        "provenance_file": "HG-MC-RERUN-T05_provenance.json",
+        "run_id": "HG-MC-RERUN-T05"
+      },
+      "h2_yield_mean_pct": 76.96923842299631,
+      "h2_yield_std_pct": 3.3262244488827113,
+      "inversion_improvement_mean": 120.03718127373973,
+      "model_lineage": "discovery_turn_05",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "pica_corrections_total": 0,
+      "pica_iterations": 3,
+      "raw_per_trial_sha256": "33288de9fd95d9fcb59e9d3f21239cf749f5ce52a8f4ab230b9348cdcb8a412d",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T05",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false
+    },
+    "turn": 5
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T06_hashes.json": "020614fc0986f0d2716454d877ef88d73f4e4ee41ee855f57b4290f67e02a395",
+      "HG-MC-RERUN-T06_provenance.json": "c4cd64fcefe538a8ddc32c94c701fd6f54af7b01a6b335751751935bb7c07aeb",
+      "HG-MC-RERUN-T06_raw_per_trial.npz": "4f02487395299e1df79816a9be7ee2800118e7ecf7d0a06fcbbe7be505245377",
+      "HG-MC-RERUN-T06_summary.json": "2edc8a1dbbca16c75d8bffef52e6b34eb8b3cb6ffc05a45306001b1dafcc3cd2"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-06-report.md",
+    "summary": {
+      "arrhenius_delta_g_mean_kJ": 1.4813554728609113,
+      "catalyst_activity_mean_pct": 65.2696220550122,
+      "catalyst_activity_std_pct": 2.6921627047945798,
+      "cost_per_kg_mean_aud": 1.3587197064515255,
+      "cost_per_kg_std_aud": 0.0343862776235158,
+      "discovery_turn": 6,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T06_raw_per_trial.npz": "output/HG-MC-RERUN-T06/HG-MC-RERUN-T06_raw_per_trial.npz",
+          "HG-MC-RERUN-T06_summary.json": "output/HG-MC-RERUN-T06/HG-MC-RERUN-T06_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T06_provenance.json": "c4cd64fcefe538a8ddc32c94c701fd6f54af7b01a6b335751751935bb7c07aeb",
+          "HG-MC-RERUN-T06_raw_per_trial.npz": "4f02487395299e1df79816a9be7ee2800118e7ecf7d0a06fcbbe7be505245377",
+          "HG-MC-RERUN-T06_summary.json": "2edc8a1dbbca16c75d8bffef52e6b34eb8b3cb6ffc05a45306001b1dafcc3cd2"
+        },
+        "hashes_file": "HG-MC-RERUN-T06_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T06",
+        "provenance_file": "HG-MC-RERUN-T06_provenance.json",
+        "run_id": "HG-MC-RERUN-T06"
+      },
+      "h2_yield_mean_pct": 73.54671559141241,
+      "h2_yield_std_pct": 5.731046270585969,
+      "inversion_improvement_mean": 120.00048262948222,
+      "model_lineage": "discovery_turn_06",
+      "n_trials": 100000,
+      "operating_temperature_mean_K": 314.14281889442583,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pica_corrections_total": 6823,
+      "raw_per_trial_sha256": "4f02487395299e1df79816a9be7ee2800118e7ecf7d0a06fcbbe7be505245377",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T06",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false
+    },
+    "turn": 6
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T07_hashes.json": "7968dbada33031de50f5188198fe388a9153d022a70b5eb1fb66314037de181a",
+      "HG-MC-RERUN-T07_provenance.json": "67d61d9c512f41405ef13f76d8d5c048f80a883d7f7c537fea101882c2f357b7",
+      "HG-MC-RERUN-T07_raw_per_trial.npz": "248339de5ef385a3b1f5740b4b71d13bc6237e66de980360cb7dd9552fef544d",
+      "HG-MC-RERUN-T07_summary.json": "fc4a925dff425ecec6b2090cad46df3027a7062459e90aeacd553834fb8fff9b"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-07-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.59348021696945,
+      "catalyst_activity_std_pct": 2.945767065314794,
+      "cost_per_kg_mean_aud": 1.3593951045200203,
+      "cost_per_kg_std_aud": 0.03429968514245419,
+      "discovery_turn": 7,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T07_raw_per_trial.npz": "output/HG-MC-RERUN-T07/HG-MC-RERUN-T07_raw_per_trial.npz",
+          "HG-MC-RERUN-T07_summary.json": "output/HG-MC-RERUN-T07/HG-MC-RERUN-T07_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T07_provenance.json": "67d61d9c512f41405ef13f76d8d5c048f80a883d7f7c537fea101882c2f357b7",
+          "HG-MC-RERUN-T07_raw_per_trial.npz": "248339de5ef385a3b1f5740b4b71d13bc6237e66de980360cb7dd9552fef544d",
+          "HG-MC-RERUN-T07_summary.json": "fc4a925dff425ecec6b2090cad46df3027a7062459e90aeacd553834fb8fff9b"
+        },
+        "hashes_file": "HG-MC-RERUN-T07_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T07",
+        "provenance_file": "HG-MC-RERUN-T07_provenance.json",
+        "run_id": "HG-MC-RERUN-T07"
+      },
+      "h2_yield_mean_pct": 73.43414924666331,
+      "h2_yield_std_pct": 5.716614190409035,
+      "inversion_improvement_mean": 120.00553102238338,
+      "model_lineage": "discovery_turn_07",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pica_corrections_total": 7272,
+      "raw_per_trial_sha256": "248339de5ef385a3b1f5740b4b71d13bc6237e66de980360cb7dd9552fef544d",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T07",
+      "safety_rate_pct": 100.0,
+      "skin_dim_count": 5,
+      "skin_quality_mean": 0.524727564235254,
+      "skin_thickness_nm_mean": 5.001279703710145,
+      "validates_au_2026904845": false
+    },
+    "turn": 7
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T08_hashes.json": "37cc012ed78756b52ea22b7e62d727e46dd392281f95478e58e06652089bafc8",
+      "HG-MC-RERUN-T08_provenance.json": "2ef8cb8065b1bfffbe77f06b28effe3125ec8b58e7a5308ff8fd645e12187e6f",
+      "HG-MC-RERUN-T08_raw_per_trial.npz": "ad7f89b66b810c39612011b8ed7b436298f31a38dcf2231efa86c312320fff42",
+      "HG-MC-RERUN-T08_summary.json": "38ce912f72f9e282a959fb4db0958d6935397865f83fdc86877cc21f19ccb645"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-08-report.md",
+    "summary": {
+      "catalyst_activity_mean_pct": 65.59348021696945,
+      "catalyst_activity_std_pct": 2.945767065314794,
+      "cost_per_kg_mean_aud": 1.3593951045200203,
+      "cost_per_kg_std_aud": 0.03429968514245419,
+      "discovery_turn": 8,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T08_raw_per_trial.npz": "output/HG-MC-RERUN-T08/HG-MC-RERUN-T08_raw_per_trial.npz",
+          "HG-MC-RERUN-T08_summary.json": "output/HG-MC-RERUN-T08/HG-MC-RERUN-T08_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T08_provenance.json": "2ef8cb8065b1bfffbe77f06b28effe3125ec8b58e7a5308ff8fd645e12187e6f",
+          "HG-MC-RERUN-T08_raw_per_trial.npz": "ad7f89b66b810c39612011b8ed7b436298f31a38dcf2231efa86c312320fff42",
+          "HG-MC-RERUN-T08_summary.json": "38ce912f72f9e282a959fb4db0958d6935397865f83fdc86877cc21f19ccb645"
+        },
+        "hashes_file": "HG-MC-RERUN-T08_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T08",
+        "provenance_file": "HG-MC-RERUN-T08_provenance.json",
+        "run_id": "HG-MC-RERUN-T08"
+      },
+      "h2_yield_mean_pct": 73.43414924666331,
+      "h2_yield_std_pct": 5.716614190409035,
+      "inversion_improvement_mean": 120.00553102238338,
+      "model_lineage": "discovery_turn_08",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "raw_per_trial_sha256": "ad7f89b66b810c39612011b8ed7b436298f31a38dcf2231efa86c312320fff42",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T08",
+      "safety_rate_pct": 100.0,
+      "tier_catalyst_mean": [
+        65.59348021696945,
+        62.31380620612098,
+        55.754458184424024,
+        45.915436151878616,
+        36.07641411933321
+      ],
+      "tier_cost_mean_aud": [
+        1.3593951045200203,
+        1.4953346149720221,
+        1.8351833911020274,
+        2.4469111881360366,
+        3.3984877613000504
+      ],
+      "tier_yield_mean": [
+        73.43414924666331,
+        66.09073432199699,
+        55.07561193499749,
+        40.38878208566483,
+        25.70195223633216
+      ],
+      "validates_au_2026904845": false
+    },
+    "turn": 8
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T09_hashes.json": "b8a9e45d20d631cb87efdeaa37c1cc2d9c135bc98775e9ebf0113a29e363b546",
+      "HG-MC-RERUN-T09_provenance.json": "315cb0cb796a1da67a4cf8be8160df890a43f03c8b8ad6d8de0308f653071a41",
+      "HG-MC-RERUN-T09_raw_per_trial.npz": "ed565dc5d6f3d7894038ba14f368f1a14a48bb776790cb0a1940b9da658932a7",
+      "HG-MC-RERUN-T09_summary.json": "f502a5009215bad703afbba6fb671830a078d145bcde94465c903f717fb9b10a"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-09-report.md",
+    "summary": {
+      "all_three_in_envelope_pct": 100.0,
+      "catalyst_activity_mean_pct": 65.59348021696945,
+      "catalyst_activity_std_pct": 2.945767065314794,
+      "catalyst_in_envelope_pct": 100.0,
+      "cost_in_envelope_pct": 100.0,
+      "cost_per_kg_mean_aud": 1.3593951045200203,
+      "cost_per_kg_std_aud": 0.03429968514245419,
+      "discovery_turn": 9,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T09_raw_per_trial.npz": "output/HG-MC-RERUN-T09/HG-MC-RERUN-T09_raw_per_trial.npz",
+          "HG-MC-RERUN-T09_summary.json": "output/HG-MC-RERUN-T09/HG-MC-RERUN-T09_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T09_provenance.json": "315cb0cb796a1da67a4cf8be8160df890a43f03c8b8ad6d8de0308f653071a41",
+          "HG-MC-RERUN-T09_raw_per_trial.npz": "ed565dc5d6f3d7894038ba14f368f1a14a48bb776790cb0a1940b9da658932a7",
+          "HG-MC-RERUN-T09_summary.json": "f502a5009215bad703afbba6fb671830a078d145bcde94465c903f717fb9b10a"
+        },
+        "hashes_file": "HG-MC-RERUN-T09_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T09",
+        "provenance_file": "HG-MC-RERUN-T09_provenance.json",
+        "run_id": "HG-MC-RERUN-T09"
+      },
+      "h2_yield_mean_pct": 73.43414924666331,
+      "h2_yield_std_pct": 5.716614190409035,
+      "inversion_improvement_mean": 120.00553102238338,
+      "model_lineage": "discovery_turn_09",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "raw_per_trial_sha256": "ed565dc5d6f3d7894038ba14f368f1a14a48bb776790cb0a1940b9da658932a7",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T09",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false,
+      "yield_in_envelope_pct": 100.0
+    },
+    "turn": 9
+  },
+  {
+    "file_hashes": {
+      "HG-MC-RERUN-T10_hashes.json": "14c88d1c0357983ad1583f6e0dea24bbd9767af9ed33ac160cbabaf14608be52",
+      "HG-MC-RERUN-T10_provenance.json": "4642d6dcaaf9c332556db543e67b77297428cb26a932e683b111d0e663f8a9b4",
+      "HG-MC-RERUN-T10_raw_per_trial.npz": "1dbfed7b6e4f47d0bb9d9ade1dc3943ddfb930b82a560af2987bfacf7e62c172",
+      "HG-MC-RERUN-T10_summary.json": "bb55f035e399eeb7f4decd28f16e54e67ef846735c0f2e0fb23c5e5c46b85eb4"
+    },
+    "in_envelope": true,
+    "report_path": "docs/discovery/turn-10-report.md",
+    "summary": {
+      "all_three_in_envelope_pct": 100.0,
+      "catalyst_activity_mean_pct": 65.59348021696945,
+      "catalyst_activity_std_pct": 2.945767065314794,
+      "catalyst_in_envelope_pct": 100.0,
+      "consolidation_complete": true,
+      "cost_in_envelope_pct": 100.0,
+      "cost_per_kg_mean_aud": 1.3593951045200203,
+      "cost_per_kg_std_aud": 0.03429968514245419,
+      "discovery_turn": 10,
+      "evidence_manifest": {
+        "artifact_paths": {
+          "HG-MC-RERUN-T10_raw_per_trial.npz": "output/HG-MC-RERUN-T10/HG-MC-RERUN-T10_raw_per_trial.npz",
+          "HG-MC-RERUN-T10_summary.json": "output/HG-MC-RERUN-T10/HG-MC-RERUN-T10_summary.json"
+        },
+        "artifacts": {
+          "HG-MC-RERUN-T10_provenance.json": "4642d6dcaaf9c332556db543e67b77297428cb26a932e683b111d0e663f8a9b4",
+          "HG-MC-RERUN-T10_raw_per_trial.npz": "1dbfed7b6e4f47d0bb9d9ade1dc3943ddfb930b82a560af2987bfacf7e62c172",
+          "HG-MC-RERUN-T10_summary.json": "bb55f035e399eeb7f4decd28f16e54e67ef846735c0f2e0fb23c5e5c46b85eb4"
+        },
+        "hashes_file": "HG-MC-RERUN-T10_hashes.json",
+        "output_dir": "output/HG-MC-RERUN-T10",
+        "provenance_file": "HG-MC-RERUN-T10_provenance.json",
+        "run_id": "HG-MC-RERUN-T10"
+      },
+      "h2_yield_mean_pct": 73.43414924666331,
+      "h2_yield_std_pct": 5.716614190409035,
+      "inversion_improvement_mean": 120.00553102238338,
+      "kernel_invokes_no_external_physics_engine": true,
+      "model_lineage": "discovery_turn_10",
+      "n_trials": 100000,
+      "patterns_applied": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "raw_per_trial_sha256": "1dbfed7b6e4f47d0bb9d9ade1dc3943ddfb930b82a560af2987bfacf7e62c172",
+      "rng_seed": 20260520,
+      "rng_seeded_libraries": {
+        "numpy": true,
+        "python_random": true,
+        "pytorch": false,
+        "seed_value": 20260520
+      },
+      "run_id": "HG-MC-RERUN-T10",
+      "safety_rate_pct": 100.0,
+      "validates_au_2026904845": false,
+      "yield_in_envelope_pct": 100.0
+    },
+    "turn": 10
+  }
+]

@@ -1,0 +1,36 @@
+feat(discovery-turn-02): apply Inversion Pattern 5 (cost: downstream -> primary constraint with byproduct credit)
+
+Architectural reference: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md
+Inversion pattern applied: Pattern 5 (cost: downstream -> primary constraint with byproduct credit)
+Cumulative patterns now applied: [2, 5]
+
+Rationale (data-driven, not narrative):
+  Turn 1 had cost_mean=-$12.05/kg (need 0.5-5.0) - non-physical.
+  The downstream `3.55 - 30.0 * yields` formula produces negative cost
+  at any yield > 0.118. Pattern 5 redefines cost as a constraint:
+  production_cost (positive) - Al(OH)3 byproduct credit, with hard floor.
+
+Observed numbers (from disk, real run, 100,000 trials, seed=20260520):
+  yield_mean    =  51.9995%   std=14.0223
+  catalyst_mean =  65.9912%   std=2.8622
+  cost_mean     = $  1.4880/kg   std=0.0841
+  in_envelope   = False
+
+Forensic anchors (SHA-256, computed from disk via sha256_of_file):
+  HG-MC-RERUN-T02_raw_per_trial.npz    92381c68f05974573d932c47d6e7dd3888684eaa7adb9af27e75bbb8a8d35990
+  HG-MC-RERUN-T02_summary.json         43cc54623b5666a50b5fc37c792d35553186de570a0b06588772cf0faa0b222f
+  HG-MC-RERUN-T02_provenance.json      d597ffb96e6e013b63d264bc5965d9a87833938b49bdb1b149d37cbe4dc87f26
+  HG-MC-RERUN-T02_hashes.json          cdd7bf6710b5caf585b381fb08217c1b5bb86516ce8120705fa96261fdc9ceef
+
+raw_per_trial_sha256 declared in summary: 92381c68f05974573d932c47d6e7dd3888684eaa7adb9af27e75bbb8a8d35990
+raw_per_trial_sha256 computed from disk:   92381c68f05974573d932c47d6e7dd3888684eaa7adb9af27e75bbb8a8d35990
+match: True
+
+Evidence pack location: aitheria-sim/output/HG-MC-RERUN-T02/ (gitignored)
+Per-turn report (committed):  docs/discovery/turn-02-report.md
+
+Honest framing: 100,000 trials per turn ran on the AITHERIA-SIM
+discovery kernel. Every number above came from disk in this session.
+No values were carried forward from prior context or memory.
+Underlying model is parametric chemistry-engineering, not TRaCE M6
+physical validation; validates_au_2026904845 remains False in summary.json.

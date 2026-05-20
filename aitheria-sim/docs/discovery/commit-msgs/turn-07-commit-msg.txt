@@ -1,0 +1,35 @@
+feat(discovery-turn-07): apply Inversion Pattern 7 (skin: 2 params -> 5 engineered dimensions)
+
+Architectural reference: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md
+Inversion pattern applied: Pattern 7 (skin: 2 params -> 5 engineered dimensions)
+Cumulative patterns now applied: [1, 2, 3, 4, 5, 6, 7]
+
+Rationale (data-driven, not narrative):
+  Turn 6 skin had 2 design parameters. Pattern 7 expands to 5: thickness,
+  composition, breakdown_threshold, regeneration_rate, catalyst_interface_
+  coupling. This is the parameter space PROTONGATE will eventually claim.
+
+Observed numbers (from disk, real run, 100,000 trials, seed=20260520):
+  yield_mean    =  73.4341%   std=5.7166
+  catalyst_mean =  65.5935%   std=2.9458
+  cost_mean     = $  1.3594/kg   std=0.0343
+  in_envelope   = True
+
+Forensic anchors (SHA-256, computed from disk via sha256_of_file):
+  HG-MC-RERUN-T07_raw_per_trial.npz    248339de5ef385a3b1f5740b4b71d13bc6237e66de980360cb7dd9552fef544d
+  HG-MC-RERUN-T07_summary.json         fc4a925dff425ecec6b2090cad46df3027a7062459e90aeacd553834fb8fff9b
+  HG-MC-RERUN-T07_provenance.json      67d61d9c512f41405ef13f76d8d5c048f80a883d7f7c537fea101882c2f357b7
+  HG-MC-RERUN-T07_hashes.json          7968dbada33031de50f5188198fe388a9153d022a70b5eb1fb66314037de181a
+
+raw_per_trial_sha256 declared in summary: 248339de5ef385a3b1f5740b4b71d13bc6237e66de980360cb7dd9552fef544d
+raw_per_trial_sha256 computed from disk:   248339de5ef385a3b1f5740b4b71d13bc6237e66de980360cb7dd9552fef544d
+match: True
+
+Evidence pack location: aitheria-sim/output/HG-MC-RERUN-T07/ (gitignored)
+Per-turn report (committed):  docs/discovery/turn-07-report.md
+
+Honest framing: 100,000 trials per turn ran on the AITHERIA-SIM
+discovery kernel. Every number above came from disk in this session.
+No values were carried forward from prior context or memory.
+Underlying model is parametric chemistry-engineering, not TRaCE M6
+physical validation; validates_au_2026904845 remains False in summary.json.

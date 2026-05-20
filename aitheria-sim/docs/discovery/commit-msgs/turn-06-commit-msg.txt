@@ -1,0 +1,36 @@
+feat(discovery-turn-06): apply Inversion Pattern 4 (yield: sampled -> first-principles Arrhenius)
+
+Architectural reference: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md
+Inversion pattern applied: Pattern 4 (yield: sampled -> first-principles Arrhenius)
+Cumulative patterns now applied: [1, 2, 3, 4, 5, 6]
+
+Rationale (data-driven, not narrative):
+  Turn 5 yield was linear in design parameters - empirical, not first-
+  principles. Pattern 4 replaces with modified Arrhenius:
+  yield = pre_exp * exp(-dG_eff / RT), where dG_eff is lowered by skin
+  engineering. This is the deepest physics inversion.
+
+Observed numbers (from disk, real run, 100,000 trials, seed=20260520):
+  yield_mean    =  73.5467%   std=5.7310
+  catalyst_mean =  65.2696%   std=2.6922
+  cost_mean     = $  1.3587/kg   std=0.0344
+  in_envelope   = True
+
+Forensic anchors (SHA-256, computed from disk via sha256_of_file):
+  HG-MC-RERUN-T06_raw_per_trial.npz    4f02487395299e1df79816a9be7ee2800118e7ecf7d0a06fcbbe7be505245377
+  HG-MC-RERUN-T06_summary.json         2edc8a1dbbca16c75d8bffef52e6b34eb8b3cb6ffc05a45306001b1dafcc3cd2
+  HG-MC-RERUN-T06_provenance.json      c4cd64fcefe538a8ddc32c94c701fd6f54af7b01a6b335751751935bb7c07aeb
+  HG-MC-RERUN-T06_hashes.json          020614fc0986f0d2716454d877ef88d73f4e4ee41ee855f57b4290f67e02a395
+
+raw_per_trial_sha256 declared in summary: 4f02487395299e1df79816a9be7ee2800118e7ecf7d0a06fcbbe7be505245377
+raw_per_trial_sha256 computed from disk:   4f02487395299e1df79816a9be7ee2800118e7ecf7d0a06fcbbe7be505245377
+match: True
+
+Evidence pack location: aitheria-sim/output/HG-MC-RERUN-T06/ (gitignored)
+Per-turn report (committed):  docs/discovery/turn-06-report.md
+
+Honest framing: 100,000 trials per turn ran on the AITHERIA-SIM
+discovery kernel. Every number above came from disk in this session.
+No values were carried forward from prior context or memory.
+Underlying model is parametric chemistry-engineering, not TRaCE M6
+physical validation; validates_au_2026904845 remains False in summary.json.

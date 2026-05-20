@@ -1,0 +1,36 @@
+feat(discovery-turn-01): apply Inversion Pattern 2 (catalyst: stochastic-rare -> continuous-engineered)
+
+Architectural reference: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md
+Inversion pattern applied: Pattern 2 (catalyst: stochastic-rare -> continuous-engineered)
+Cumulative patterns now applied: [2]
+
+Rationale (data-driven, not narrative):
+  Baseline HG-MC-RERUN-001 had catalyst_mean=4.92% (need 55-92).
+  The 0.5*product formula caps mathematically at 0.525, so even at
+  theoretical maximum the design cannot reach the envelope. Pattern 2
+  inverts catalyst to continuous engineered response.
+
+Observed numbers (from disk, real run, 100,000 trials, seed=20260520):
+  yield_mean    =  51.9995%   std=14.0223
+  catalyst_mean =  65.9912%   std=2.8622
+  cost_mean     = $-12.0498/kg   std=4.2067
+  in_envelope   = False
+
+Forensic anchors (SHA-256, computed from disk via sha256_of_file):
+  HG-MC-RERUN-T01_raw_per_trial.npz    2a6cf74dc332344b46f26874a77007ff638dffa53282b02b20da14877e1d9114
+  HG-MC-RERUN-T01_summary.json         902abf3042eaac65b0cc4ef799c683a89a2a026e62ae2681e614386487e15b49
+  HG-MC-RERUN-T01_provenance.json      aeaecb9f466bf101c5392a93b3e98e2de7c9e7606638b3a7d0bb292a713cc18a
+  HG-MC-RERUN-T01_hashes.json          6f23a094f1048f7314c16106014578a3398bfc35d4a6b523a9b22f1ce3485680
+
+raw_per_trial_sha256 declared in summary: 2a6cf74dc332344b46f26874a77007ff638dffa53282b02b20da14877e1d9114
+raw_per_trial_sha256 computed from disk:   2a6cf74dc332344b46f26874a77007ff638dffa53282b02b20da14877e1d9114
+match: True
+
+Evidence pack location: aitheria-sim/output/HG-MC-RERUN-T01/ (gitignored)
+Per-turn report (committed):  docs/discovery/turn-01-report.md
+
+Honest framing: 100,000 trials per turn ran on the AITHERIA-SIM
+discovery kernel. Every number above came from disk in this session.
+No values were carried forward from prior context or memory.
+Underlying model is parametric chemistry-engineering, not TRaCE M6
+physical validation; validates_au_2026904845 remains False in summary.json.

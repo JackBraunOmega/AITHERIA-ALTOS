@@ -1,0 +1,35 @@
+feat(discovery-turn-04): apply Inversion Pattern 3 (skin: static barrier -> engineered participant)
+
+Architectural reference: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md
+Inversion pattern applied: Pattern 3 (skin: static barrier -> engineered participant)
+Cumulative patterns now applied: [1, 2, 3, 5]
+
+Rationale (data-driven, not narrative):
+  Turn 3 yield_std was still ~7% — too wide. Pattern 3 inverts skin
+  from static barrier to engineered participant; better skin design
+  (lower breakdown energy, faster regen) tightens yield distribution.
+
+Observed numbers (from disk, real run, 100,000 trials, seed=20260520):
+  yield_mean    =  76.9692%   std=3.3262
+  catalyst_mean =  65.2696%   std=2.6922
+  cost_mean     = $  1.3382/kg   std=0.0200
+  in_envelope   = True
+
+Forensic anchors (SHA-256, computed from disk via sha256_of_file):
+  HG-MC-RERUN-T04_raw_per_trial.npz    373121c09cec28a373d7a9c94c04a5a735e80f37bb16f50b23e5d04624770efc
+  HG-MC-RERUN-T04_summary.json         1c7430bdffdbe74a9af40d4ad380d1564c3fa2972242f84ff009268e0084892d
+  HG-MC-RERUN-T04_provenance.json      01e2a1182e9445875019abb1448701bd69f9ce62d9e4a4a9eb070c4d11820d70
+  HG-MC-RERUN-T04_hashes.json          6cacc576e4595d8f238bc41ba5325df5c27fd50d5a3de4da176735cf8c029b23
+
+raw_per_trial_sha256 declared in summary: 373121c09cec28a373d7a9c94c04a5a735e80f37bb16f50b23e5d04624770efc
+raw_per_trial_sha256 computed from disk:   373121c09cec28a373d7a9c94c04a5a735e80f37bb16f50b23e5d04624770efc
+match: True
+
+Evidence pack location: aitheria-sim/output/HG-MC-RERUN-T04/ (gitignored)
+Per-turn report (committed):  docs/discovery/turn-04-report.md
+
+Honest framing: 100,000 trials per turn ran on the AITHERIA-SIM
+discovery kernel. Every number above came from disk in this session.
+No values were carried forward from prior context or memory.
+Underlying model is parametric chemistry-engineering, not TRaCE M6
+physical validation; validates_au_2026904845 remains False in summary.json.
