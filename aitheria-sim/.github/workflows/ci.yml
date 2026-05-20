@@ -1,0 +1,46 @@
+# NOTE: This is the AITHERIA-SIM reference scaffold CI workflow. It is
+# scoped to the aitheria-sim/ subdirectory and only fires when files
+# under that path change. The main AITHERIA-ALTOS biotech SaaS CI lives
+# elsewhere and is not affected.
+
+name: aitheria-sim CI
+
+on:
+  push:
+    paths: ["aitheria-sim/**"]
+  pull_request:
+    paths: ["aitheria-sim/**"]
+
+defaults:
+  run:
+    working-directory: aitheria-sim
+
+jobs:
+  layer-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python tools/check_layer_imports.py
+
+  license-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          pip install -e ".[dev]"
+          python tools/license_audit.py
+
+  test:
+    needs: [layer-check, license-audit]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          pip install -e ".[dev]"
+          pytest tests/ -ra

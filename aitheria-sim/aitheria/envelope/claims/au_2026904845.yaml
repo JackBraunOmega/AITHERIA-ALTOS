@@ -1,0 +1,41 @@
+# AU Provisional 2026904845 — chemistry validation envelope
+# Priority date: 20 May 2026
+# Applicant: VivoVac Pty Ltd (ACN 652 414 376)
+#
+# Source: docs/Claude-Code-Operating-Manual-AITHERIA-SIM-v2.0.md, Section 5.
+# These ranges define the in-envelope band that the GALVANOXIDE kernel
+# implementation must produce when validated against the 100,000-trial
+# Monte Carlo and the TRaCE M6 physical validation.
+#
+# A summary.json output is "in envelope" iff every named metric falls
+# within its [min, max] range inclusive.
+
+priority_date: "2026-05-20"
+applicant: "VivoVac Pty Ltd"
+acn: "652 414 376"
+
+ranges:
+  h2_yield_mean_pct:
+    min: 60.0
+    max: 95.0
+    units: "percent"
+    description: "Mean fraction of theoretical hydrogen yield from Al + 3 H2O -> Al(OH)3 + 1.5 H2."
+
+  catalyst_activity_mean_pct:
+    min: 55.0
+    max: 92.0
+    units: "percent"
+    description: "Mean MnO2 catalyst active surface fraction across the trial."
+
+  cost_per_kg_mean_aud:
+    min: 0.5
+    max: 5.0
+    units: "AUD per kg H2"
+    description: "Production cost per kilogram of hydrogen; positivity enforced."
+
+# Non-envelope diagnostic fields (reported but not asserted):
+diagnostics:
+  - h2_yield_std_pct
+  - wall_clock_seconds
+  - n_trials
+  - rng_seed

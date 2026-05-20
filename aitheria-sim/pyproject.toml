@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aitheria-sim"
+version = "0.1.0+reference.scaffold"
+description = "Reference scaffolding for AITHERIA-SIM Sprint 1 (NOT validated). Built 20 May 2026 by Claude Code."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "HydroGien Group Limited" }]
+dependencies = [
+    "numpy>=1.26",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pip-licenses>=4.0",
+]
+adapters = [
+    # Physics adapters — all optional. Adapters gracefully degrade when absent.
+    # genesis-world  # not on PyPI for all platforms; install manually
+    # warp-lang>=1.3
+    # cantera>=3.0
+    # mitsuba>=3.5
+    # drjit>=1.0
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aitheria*"]
+exclude = ["tests*", "tools*", "benchmarks*", "output*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-ra --strict-markers"

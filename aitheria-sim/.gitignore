@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+
+# Evidence packs are session artefacts, not version-controlled.
+# Each session produces them fresh; their hashes go into commit messages
+# as the canonical anchor, not the files themselves.
+output/*/
+!output/.gitkeep
+
+# Local virtualenvs
+.venv/
+venv/

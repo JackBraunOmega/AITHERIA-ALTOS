@@ -1,0 +1,49 @@
+# Al + 3 H2O -> Al(OH)3 + 1.5 H2  (MnO2 catalyst)
+# Reference-scaffold Cantera mechanism stub. Thermodynamic and kinetic
+# parameters are placeholders; the real values will land when the
+# GALVANOXIDE clean-room kernel is implemented in Sprint 2.
+
+description: |
+  Reference scaffold for the Al/H2O + MnO2 reaction network. NOT validated.
+
+generator: aitheria-sim-reference
+input-files: []
+cantera-version: 3.0
+
+phases:
+  - name: gas
+    thermo: ideal-gas
+    elements: [H, O]
+    species: [H2, H2O, O2]
+    kinetics: gas
+    state:
+      T: 298.15
+      P: 1.01325e+05
+
+species:
+  - name: H2
+    composition: { H: 2 }
+    thermo:
+      model: constant-cp
+      T0: 298.15
+      h0: 0.0
+      s0: 130.68 J/mol/K
+      cp0: 28.84 J/mol/K
+  - name: H2O
+    composition: { H: 2, O: 1 }
+    thermo:
+      model: constant-cp
+      T0: 298.15
+      h0: -285830 J/mol
+      s0: 69.95 J/mol/K
+      cp0: 75.38 J/mol/K
+  - name: O2
+    composition: { O: 2 }
+    thermo:
+      model: constant-cp
+      T0: 298.15
+      h0: 0.0
+      s0: 205.15 J/mol/K
+      cp0: 29.38 J/mol/K
+
+reactions: []  # placeholder; real GALVANOXIDE kinetics to be filled by Sprint 2.
